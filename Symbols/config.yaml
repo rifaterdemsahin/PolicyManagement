@@ -1,0 +1,55 @@
+apiVersion: policy.management.openshift.io/v1
+kind: OperatorConfig
+metadata:
+  name: policy-management-config
+  namespace: policy-management
+spec:
+  # Operator configuration settings
+  logging:
+    level: info
+    format: json
+  
+  # Policy enforcement settings
+  enforcement:
+    autoRemediate: true
+    scanInterval: 300 # seconds
+    
+  # Resource limits for policy evaluation
+  resources:
+    maxPoliciesPerCluster: 100
+    maxViolationsStored: 1000
+    
+  # Integration settings
+  integrations:
+    alerting:
+      enabled: true
+      providers:
+        - type: slack
+          channel: "#policy-alerts"
+        - type: email
+          recipients:
+            - admin@example.com
+            
+  # RBAC configuration
+  rbac:
+    defaultRole: viewer
+    roles:
+      - name: admin
+        permissions:
+          - "*"
+      - name: editor 
+        permissions:
+          - read
+          - update
+      - name: viewer
+        permissions:
+          - read
+          
+  # Monitoring configuration
+  monitoring:
+    metrics:
+      enabled: true
+      port: 8080
+    healthCheck:
+      enabled: true
+      port: 8081

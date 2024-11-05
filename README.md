@@ -12,41 +12,7 @@ OpenShift Cluster Policy Management provides a framework for managing and enforc
 - **Integration**: Seamlessly integrate with existing OpenShift tools and workflows.
 - **Role-Based Access Control**: Manage user permissions and roles for policy management.
 
-## Prerequisites
 
-Before installing OpenShift Cluster Policy Management, ensure you have:
-
-- Access to an OpenShift cluster.
-- The `oc` command-line tool installed and configured.
-- Sufficient permissions to create and manage resources in the cluster.
-
-## Installation
-
-Follow these steps to install OpenShift Cluster Policy Management:
-
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/your-org/openshift-cluster-policy-management.git
-   cd openshift-cluster-policy-management
-   ```
-
-2. **Deploy the Policy Management Operator**:
-   ```bash
-   oc apply -f deploy/operator.yaml
-   ```
-
-3. **Configure the Operator**:
-   - Edit the `config.yaml` file to customize the settings.
-   - Apply the configuration:
-     ```bash
-     oc apply -f config.yaml
-     ```
-
-4. **Verify the Installation**:
-   Check the status of the operator:
-   ```bash
-   oc get pods -n policy-management
-   ```
 
 ## Usage
 
@@ -116,3 +82,6 @@ For questions or feedback, please reach out to [your-email@example.com].
 ---
 
 Feel free to customize this README to better fit the specific details and requirements of your OpenShift Cluster Policy Management implementation!
+
+
+PS C:\projects\PolicyManagement> git pull; git add . ; git commit -m "initial commit " ; git push;clear

@@ -1,0 +1,56 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: ClusterServiceVersion
+metadata:
+  name: policy-management-operator
+  namespace: policy-management
+spec:
+  displayName: OpenShift Cluster Policy Management
+  description: |
+    OpenShift Cluster Policy Management provides a framework for managing and enforcing 
+    policies across OpenShift clusters.
+  version: 0.1.0
+  provider:
+    name: Example Organization
+  install:
+    strategy: deployment
+    spec:
+      deployments:
+        - name: policy-management-operator
+          spec:
+            replicas: 1
+            selector:
+              matchLabels:
+                name: policy-management-operator
+            template:
+              metadata:
+                labels:
+                  name: policy-management-operator
+              spec:
+                containers:
+                - name: policy-management-operator
+                  image: policy-management-operator:v0.1.0
+                  ports:
+                  - containerPort: 8080
+                  resources:
+                    limits:
+                      cpu: 200m
+                      memory: 256Mi
+                    requests:
+                      cpu: 100m
+                      memory: 128Mi
+  installModes:
+    - type: OwnNamespace
+      supported: true
+    - type: SingleNamespace
+      supported: true
+    - type: MultiNamespace
+      supported: true
+    - type: AllNamespaces
+      supported: true
+  customresourcedefinitions:
+    owned:
+    - kind: Policy
+      name: policies.policy.management.openshift.io
+      version: v1
+      displayName: Policy
+      description: Represents a policy to be enforced across clusters
