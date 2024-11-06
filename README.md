@@ -1,6 +1,4 @@
-# OpenShift Cluster Policy Management
-
-Self Learning Project
+# Self Learning Project Template
 
 Documentation for the Folder Structure
 | Section             | Description                                                                                                               | Action              |
@@ -13,7 +11,7 @@ Documentation for the Folder Structure
 | **🔣 Symbols**      | *Code That Is Implemented* - Includes code snippets and examples to demonstrate each concept practically.              |  Execute it   |
 | **🌀 Semblance**    | *Errors Found in the Process* - Documents mistakes and solutions, making errors valuable learning opportunities.       |  Fix it   |
 
-Practical Terminal Commands
+Practical Terminal Commands From Your Workstation
 
 ```bash
 git pull; git add . ; git commit -m "initial commit " ; git push;clear
