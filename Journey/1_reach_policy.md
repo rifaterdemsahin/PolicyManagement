@@ -8,6 +8,8 @@ graph TD
     A --> G[RoleBinding]
 ```
 
+todo > add the goal to reach from front end to backend with the service account on top of the arrow
+
 ## 🚀 Reach Active Policy
 
 1. **RBAC**
