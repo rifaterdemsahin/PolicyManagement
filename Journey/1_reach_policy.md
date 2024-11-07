@@ -1,11 +1,17 @@
 ```mermaid
 graph TD
-    A[RBAC] --> B[NetworkPolicy]
-    B --> C[FrontEnd]
-    B --> D[BackEnd]
+    A[RBAC] -->|Apply| B[NetworkPolicy]
+    B -->|Controls| C[FrontEnd]
+    B -->|Controls| D[BackEnd]
+    A --> E[ServiceAccount]
+    A --> F[Role]
+    A --> G[RoleBinding]
 ```
 
-Reach Active Policy
+## 🚀 Reach Active Policy
 
-1. RBAC
-2. NetworkPolicy (Front to BackEnd)
+1. **RBAC**
+    - `kubectl apply -f serviceaccount.yaml` 📄
+    - `kubectl apply -f role.yaml` 📄
+    - `kubectl apply -f rolebinding.yaml` 📄
+2. **NetworkPolicy** (Front to BackEnd)
