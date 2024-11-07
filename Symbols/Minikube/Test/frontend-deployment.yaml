@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-pod
+  labels:
+    role: frontend
+    policytask: "true"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      role: frontend
+      policytask: "true"
+  template:
+    metadata:
+      labels:
+        role: frontend
+        policytask: "true"
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: frontend
+        image: busybox
+        command: ["sleep", "3600"]

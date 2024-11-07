@@ -1,0 +1,66 @@
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl exec frontend-pod -- wget --spider --timeout=1 backend-service.default.svc.cluster.local:8080
+Error from server (NotFound): pods "frontend-pod" not found
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ 
+
+
+Sure! Here’s the deployment YAML for the `frontend-pod` you described:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    role: frontend
+    policytask: "true"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      role: frontend
+      policytask: "true"
+  template:
+    metadata:
+      labels:
+        role: frontend
+        policytask: "true"
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: frontend-pod
+        image: busybox
+        command: ["sleep", "3600"]
+```
+
+### Explanation
+
+- **Deployment Name**: `frontend-deployment`
+- **Replicas**: 3 (You can adjust this number based on your needs)
+- **Selector**: Matches pods with labels `role: frontend` and `policytask: "true"`
+- **Template**: Defines the pod template with the same labels and container configuration as your provided pod specification.
+
+### Applying the Deployment
+
+To apply this deployment, save the YAML to a file (e.g., `frontend-deployment.yaml`) and run:
+
+```bash
+kubectl apply -f frontend-deployment.yaml
+```
+
+This will create a deployment that manages the `frontend` pods with the specified configuration. If you need further assistance or have any questions, feel free to ask!
+
+@rifaterdemsahin ➜ .../PolicyManagement/Symbols/Minikube/Test (main) $ kubectl delete pods -l role=frontend
+pod "frontend-deployment-66bff8cc86-dqz7n" deleted
+pod "frontend-deployment-66bff8cc86-ptnhj" deleted
+pod "frontend-deployment-66bff8cc86-z52kt" deleted
+pod "frontend-deployment-698b7b9c44-5hvw5" deleted
+pod "frontend-deployment-698b7b9c44-6rb9r" deleted
+pod "frontend-deployment-698b7b9c44-h9vh6" deleted
+
+
+rifaterdemsahin ➜ .../PolicyManagement/Symbols/Minikube/Test (main) $ kubectl get pods -l role=frontend
+NAME                                   READY   STATUS    RESTARTS   AGE
+frontend-deployment-66bff8cc86-2xqzv   1/1     Running   0          57s
+frontend-deployment-66bff8cc86-rnlsd   1/1     Running   0          57s
+frontend-deployment-66bff8cc86-s8mrm   1/1     Running   0          57s
+@rifaterdemsahin ➜ .../PolicyManagement/Symbols/Minikube/Test (main) $ 
