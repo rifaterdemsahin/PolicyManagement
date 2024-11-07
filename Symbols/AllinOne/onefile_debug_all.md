@@ -124,4 +124,47 @@ spec:
       port: 80
       targetPort: 8080
 
+> kubectl expose deployment backend-service --type=ClusterIP --port=80 --target-port=8080 --selector="role=backend"
+
+
+
+############################ BULK RUN ##########################################
+kubectl run frontend-pod --image=busybox --restart=Always --labels="role=frontend,policytask=true" --command -- sleep 3600
+kubectl run backend-pod --image=busybox --labels="role=backend,policytask=true" --command -- sleep 3600
+kubectl create deployment backend-service --image=busybox --replicas=3 --port=8080 --labels="role=backend,policytask=true" --command -- sleep 3600
+kubectl create deployment frontend-pod --image=busybox --replicas=3 --labels="role=frontend,policytask=true" --command -- sleep 3600
 kubectl expose deployment backend-service --type=ClusterIP --port=80 --target-port=8080 --selector="role=backend"
+
+> Why does it not work : kubectl exec frontend-pod -- wget --spider --timeout=1 backend-pod
+
+################################## GPT OUT #######################################
+
+The issue you're encountering is likely due to the fact that `kubectl exec` is used to execute commands in a running container of a Pod, but it requires the Pod to be running and accessible. Here are a few things to check and steps to troubleshoot:
+
+1. **Pod Names**: Ensure that the Pod names are correct. When you create Deployments, the Pods created by them will have names that include a unique identifier. You can list the Pods to get the exact names:
+   ```sh
+   kubectl get pods
+   ```
+
+2. **Pod Status**: Verify that the Pods are running and ready:
+   ```sh
+   kubectl get pods
+   ```
+
+3. **Correct Pod Name in `kubectl exec`**: Use the exact Pod name from the output of the `kubectl get pods` command. For example:
+   ```sh
+   kubectl exec <frontend-pod-name> -- wget --spider --timeout=1 backend-service
+   ```
+
+4. **Service Name**: Ensure that you are using the correct service name (`backend-service`) instead of the Pod name (`backend-pod`). The service name is used for DNS resolution within the cluster.
+
+5. **Network Policies**: Check if there are any network policies that might be restricting communication between the Pods.
+
+Here is an example of how you might run the `wget` command using the correct service name:
+```sh
+kubectl exec <frontend-pod-name> -- wget --spider --timeout=1 backend-service
+```
+
+Replace `<frontend-pod-name>` with the actual name of one of the frontend Pods.
+
+Would you like more detailed steps on any of these points or further assistance with troubleshooting?
