@@ -6,12 +6,15 @@ Establish a robust OpenShift cluster policy management system to ensure organiza
 ## Key Results 📊
 
 1. 🔐 **Policy Implementation**
-   - Create and implement 100% of required custom policies using YAML/JSON
+   - Create and implement 100% of required custom policies using YAML
+   -- Roles , Bindings
+      -- I-can tests
    - Achieve 95% policy compliance rate across all clusters
    - Deploy automated enforcement mechanisms in all environments
 
 2. 📈 **Monitoring & Compliance**
    - Establish real-time violation monitoring with <1 hour response time
+      - i-can test to check it
    - Generate weekly compliance reports with 100% accuracy
    - Maintain violation resolution rate of >90%
 
@@ -26,6 +29,3 @@ Establish a robust OpenShift cluster policy management system to ensure organiza
 - 99.9% uptime for policy enforcement systems
 - <2 hours mean time to resolve policy violations
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).

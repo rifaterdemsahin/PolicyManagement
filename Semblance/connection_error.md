@@ -78,3 +78,33 @@ command terminated with exit code 1
 
 By addressing these potential issues, you should be able to resolve the DNS error and successfully execute the command.
 
+>>>>>>>>>>>>>>>>>
+
+retry after seein can-i works
+
+kubectl exec frontend-pod -- wget --spider --timeout=1 backend-pod.default.svc.cluster.local
+
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl exec frontend-pod -- wget --spider --timeout=1 backend-pod.default.svc.cluster.local
+wget: bad address 'backend-pod.default.svc.cluster.local'
+command terminated with exit code 1
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ 
+
+
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl auth can-i get pods --as=system:serviceaccount:default:dev-user
+yes
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl exec frontend-pod -- wget --spider --timeout=1 backend-pod.default.svc.cluster.local
+wget: bad address 'backend-pod.default.svc.cluster.local'
+command terminated with exit code 1
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl exec frontend-pod -- wget --spider --timeout=1 backend-svc.default.svc.cl
+uster.local
+wget: bad address 'backend-svc.default.svc.cluster.local'
+command terminated with exit code 1
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ 
+
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl exec frontend-pod -- wget --spider --timeout=1 backend.default.svc.cluste
+r.local
+wget: bad address 'backend.default.svc.cluster.local'
+command terminated with exit code 1
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ 
+
+
