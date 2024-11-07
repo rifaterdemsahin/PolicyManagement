@@ -4,7 +4,7 @@ metadata:
   name: frontend-to-backend
   namespace: default
   labels:
-    policytask: true
+    policytask: "true"
 spec:
   podSelector:
     matchLabels:
