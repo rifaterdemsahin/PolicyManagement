@@ -219,3 +219,45 @@ kubectl expose deployment backend-pod --type=ClusterIP --port=80 --target-port=8
 - **Service Exposure**: The `kubectl expose deployment` command creates a service for the `backend-pod` deployment, exposing port 80 and targeting port 8080 on the Pods with the specified labels.
 
 By following these steps, you should be able to create and expose the deployments correctly. If you encounter any further issues, feel free to ask!
+
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl get pods
+NAME                            READY   STATUS    RESTARTS   AGE
+backend-pod-6f7bf4bd6f-2rkzn    1/1     Running   0          7m21s
+backend-pod-6f7bf4bd6f-5fmhr    1/1     Running   0          7m21s
+backend-pod-6f7bf4bd6f-sn95m    1/1     Running   0          7m21s
+frontend-pod-5b4895d486-h8frc   1/1     Running   0          5m36s
+frontend-pod-5b4895d486-t9zfz   1/1     Running   0          5m36s
+frontend-pod-5b4895d486-wm6t8   1/1     Running   0          5m36s
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ 
+
+   kubectl exec frontend-pod-5b4895d486-h8frc -- wget --spider --timeout=1 backend-service
+
+   @rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl exec frontend-pod-5b4895d486-h8frc -- wget --spider --timeout=1 backend-service
+wget: bad address 'backend-service'
+command terminated with exit code 1
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ 
+
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl get svc
+NAME          TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+backend-pod   ClusterIP   10.97.94.134   <none>        80/TCP    2m39s
+kubernetes    ClusterIP   10.96.0.1      <none>        443/TCP   10m
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ 
+
+
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl exec frontend-pod-5b4895d486-h8frc -- wget --spider --timeout=1 backend-pod
+Connecting to backend-pod (10.97.94.134:80)
+wget: download timed out
+command terminated with exit code 1
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ 
+
+```sh
+kubectl exec frontend-pod-5b4895d486-h8frc -- wget --spider --timeout=1 backend-pod:8080
+```
+
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl exec frontend-pod-5b4895d486-h8frc -- wget --spider --timeout=1 backend-pod:8080
+Connecting to backend-pod:8080 (10.97.94.134:8080)
+wget: download timed out
+command terminated with exit code 1
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ 
+
+kubectl exec frontend-pod-5b4895d486-h8frc -- wget --spider --timeout=10 backend-pod:8080
