@@ -474,3 +474,8 @@ Error from server (BadRequest): Unable to find "rbac.authorization.k8s.io/v1, Re
 Error from server (BadRequest): Unable to find "networking.k8s.io/v1, Resource=networkpolicies" that match label selector "", field selector "metadata.creationTimestamp": invalid selector: 'metadata.creationTimestamp'; can't understand 'metadata.creationTimestamp'
 @rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ ^C
 @rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ 
+
+NAME                                                                                                         CREATED AT
+clusterrole.rbac.authorization.k8s.io/admin                                                                  2024-11-07T09:56:48Z
+clusterrole.rbac.authorization.k8s.io/cluster-admin                                                          2024-11-07T09:56:48Z
+clusterrole.rbac.authorization.k8s.io/edit                                                                   2024-11-07T09:56:48Z
