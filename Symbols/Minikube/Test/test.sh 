@@ -1,0 +1,2 @@
+kubectl apply -f backend-pod.yaml
+kubectl apply -f frontend-pod.yaml
