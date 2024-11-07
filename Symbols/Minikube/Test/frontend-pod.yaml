@@ -6,7 +6,8 @@ metadata:
         role: frontend
         policytask: "true"
 spec:
-    containers:
-    - name: frontend
+    restartPolicy: Always
+      containers:
+      - name: frontend
         image: busybox
         command: ["sleep", "3600"]
