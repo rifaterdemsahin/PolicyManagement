@@ -16,3 +16,6 @@ graph TD
     - `kubectl apply -f rolebinding.yaml` 📄
 2. **NetworkPolicy Testing** (Front to BackEnd)
 - kubectl auth can-i get pods --as=system:serviceaccount:default:dev-user
+
+
+Cluster Wide Policy Versus Pod Wide is Different
