@@ -14,5 +14,6 @@ Documentation for the Folder Structure
 Practical Terminal Commands From Your Workstation
 
 ```bash
-git pull; git add . ; git commit -m "initial commit " ; git push;clear
+git pull; git add . ; git commit -m "initial commit " 
+git push;clear
 ```

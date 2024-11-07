@@ -30,3 +30,9 @@ kubectl get networkpolicies --all-namespaces
 
 These commands will provide you with a list of the respective resources in your Kubernetes cluster.
 
+## Get All Policies and RBAC Resources
+To get all the above-mentioned policies and RBAC resources in one command, you can use:
+```sh
+kubectl get clusterrolebindings,clusterroles,rolebindings,roles,networkpolicies --all-namespaces
+```
+This command will provide you with a list of all the specified resources in your Kubernetes cluster.
