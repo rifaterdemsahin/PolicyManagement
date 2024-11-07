@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-service
+  labels:
+    role: backend
+    policytask: "true"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      role: backend
+      policytask: "true"
+  template:
+    metadata:
+      labels:
+        role: backend
+        policytask: "true"
+    spec:
+      containers:
+      - name: backend
+        image: busybox
+        command: ["sleep", "3600"]
+        ports:
+        - containerPort: 8080

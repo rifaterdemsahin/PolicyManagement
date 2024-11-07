@@ -108,3 +108,56 @@ command terminated with exit code 1
 @rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ 
 
 
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $  kubectl exec frontend-pod -- wget --spider --timeout=1 backend-service.default.s
+vc.cluster.local
+Connecting to backend-service.default.svc.cluster.local (10.109.228.146:80)
+wget: can't connect to remote host (10.109.228.146): Connection refused
+command terminated with exit code 1
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ minikube status
+minikube
+type: Control Plane
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured]
+
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl describe service backend-service -n default
+Name:                     backend-service
+Namespace:                default
+Labels:                   policytask=true
+                          role=backend
+Annotations:              <none>
+Selector:                 role=backend
+Type:                     ClusterIP
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.109.228.146
+IPs:                      10.109.228.146
+Port:                     <unset>  80/TCP
+TargetPort:               8080/TCP
+Endpoints:                10.244.0.9:8080
+Session Affinity:         None
+Internal Traffic Policy:  Cluster
+Events:                   <none>
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ 
+
+To update your command to use port 8080, you can specify the port in the URL. Here’s how you can modify your `kubectl exec` command:
+
+```bash
+kubectl exec frontend-pod -- wget --spider --timeout=1 backend-service.default.svc.cluster.local:8080
+```
+
+This command will check the connectivity to the `backend-service` on port 8080 from the `frontend-pod` using `wget` with a timeout of 1 second.
+
+If you have any more questions or need further assistance, feel free to ask!
+
+
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl exec frontend-pod -- wget --spider --timeout=1 backend-service.default.svc.cluster.local:8080
+Connecting to backend-service.default.svc.cluster.local:8080 (10.109.228.146:8080)
+wget: download timed out
+command terminated with exit code 1
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl exec frontend-pod -- wget --spider --timeout=1 backend-service.default.svc.cluster.local
+Connecting to backend-service.default.svc.cluster.local (10.109.228.146:80)
+wget: can't connect to remote host (10.109.228.146): Connection refused
+command terminated with exit code 1
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ 
