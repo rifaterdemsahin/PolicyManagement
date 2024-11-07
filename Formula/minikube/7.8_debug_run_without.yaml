@@ -1,0 +1,14 @@
+You can create and run a Kubernetes Pod without using a YAML file by using the `kubectl run` command directly in the terminal. Here's how you can do it:
+
+```sh
+kubectl run frontend-pod --image=busybox --restart=Always --labels="role=frontend,policytask=true" --command -- sleep 3600
+```
+
+This command does the following:
+- **kubectl run frontend-pod**: Creates a Pod named `frontend-pod`.
+- **--image=busybox**: Specifies the container image to use.
+- **--restart=Always**: Sets the restart policy to `Always`.
+- **--labels="role=frontend,policytask=true"**: Adds the specified labels to the Pod.
+- **--command -- sleep 3600**: Runs the `sleep 3600` command inside the container.
+
+Would you like to know more about any of these options or need help with something else?
