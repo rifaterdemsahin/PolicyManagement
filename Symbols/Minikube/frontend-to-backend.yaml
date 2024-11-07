@@ -3,6 +3,8 @@ kind: NetworkPolicy
 metadata:
   name: frontend-to-backend
   namespace: default
+  labels:
+    policytask: true
 spec:
   podSelector:
     matchLabels:

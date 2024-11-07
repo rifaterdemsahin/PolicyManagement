@@ -3,6 +3,8 @@ kind: RoleBinding
 metadata:
   name: read-pods
   namespace: default
+  labels:
+    policytask: true
 subjects:
 - kind: ServiceAccount
   name: dev-user

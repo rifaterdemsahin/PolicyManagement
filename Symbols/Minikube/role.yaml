@@ -3,6 +3,8 @@ kind: Role
 metadata:
   namespace: default
   name: pod-reader
+  labels:
+    policytask: true
 rules:
 - apiGroups: [""]
   resources: ["pods"]
