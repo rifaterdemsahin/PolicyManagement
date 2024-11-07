@@ -41,3 +41,14 @@ The error message `The connection to the server 192.168.49.2:8443 was refused - 
    Ensure that the `kubectl` command is using the correct host and port for the API server. This information is usually specified in the `kubeconfig` file.
 
 By following these steps, you should be able to identify and resolve the connectivity issue with the Kubernetes API server. Let me know if you need further assistance!
+
+
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl auth can-i get pods --as=system:serviceaccount:default:dev-user
+The connection to the server 192.168.49.2:8443 was refused - did you specify the right host or port?
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ minikube status
+minikube
+type: Control Plane
+host: Running
+kubelet: Stopped
+apiserver: Stopped
+kubeconfig: Configured
