@@ -19,6 +19,6 @@ todo > add the goal to reach from front end to backend with the service account 
 2. **NetworkPolicy Testing** (Front to BackEnd)
 - kubectl auth can-i get pods --as=system:serviceaccount:default:dev-user >>> more likely to be automated.
 
->>> also See it with manual wget as well >>> closer to prototype situation
+>>> also See it with manual wget as well >>> closer to prototype situation >>> port and service usage!
 
 Cluster Wide Policy Versus Pod Wide is Different
