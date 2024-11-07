@@ -14,4 +14,5 @@ graph TD
     - `kubectl apply -f serviceaccount.yaml` 📄
     - `kubectl apply -f role.yaml` 📄
     - `kubectl apply -f rolebinding.yaml` 📄
-2. **NetworkPolicy** (Front to BackEnd)
+2. **NetworkPolicy Testing** (Front to BackEnd)
+- kubectl auth can-i get pods --as=system:serviceaccount:default:dev-user
