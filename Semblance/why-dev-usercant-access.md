@@ -1,0 +1,48 @@
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl describe serviceaccount dev-user -n default
+Name:                dev-user
+Namespace:           default
+Labels:              <none>
+Annotations:         <none>
+Image pull secrets:  <none>
+Mountable secrets:   <none>
+Tokens:              <none>
+Events:              <none>
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ 
+
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl get serviceaccount dev-user;kubectl get clusterrolebindings,clusterroles,rolebindings,roles,networkpolicies,serviceaccount,serviceaccount -l policytask=true
+NAME       SECRETS   AGE
+dev-user   0         43m
+NAME                                              ROLE              AGE
+rolebinding.rbac.authorization.k8s.io/read-pods   Role/pod-reader   43m
+
+NAME                                        CREATED AT
+role.rbac.authorization.k8s.io/pod-reader   2024-11-07T10:24:32Z
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl get pods
+NAME           READY   STATUS    RESTARTS   AGE
+backend-pod    1/1     Running   0          7m30s
+frontend-pod   1/1     Running   0          5m19s
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl get svc
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   88m
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl get svc -A
+NAMESPACE     NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
+default       kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP                  88m
+kube-system   kube-dns     ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   88m
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $  kubectl get pods -A
+NAMESPACE     NAME                               READY   STATUS    RESTARTS      AGE
+default       backend-pod                        1/1     Running   0             9m12s
+default       frontend-pod                       1/1     Running   0             7m1s
+kube-system   coredns-6f6b679f8f-2tfp2           1/1     Running   1 (87m ago)   88m
+kube-system   etcd-minikube                      1/1     Running   1 (87m ago)   88m
+kube-system   kube-apiserver-minikube            1/1     Running   1 (87m ago)   88m
+kube-system   kube-controller-manager-minikube   1/1     Running   1 (87m ago)   88m
+kube-system   kube-proxy-d4b2n                   1/1     Running   1 (87m ago)   88m
+kube-system   kube-scheduler-minikube            1/1     Running   1 (87m ago)   88m
+kube-system   storage-provisioner                1/1     Running   2 (87m ago)   88m
+
+
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ kubectl exec frontend-pod -- wget --spider --timeout=1 backend-pod.default.svc.cluster.local
+wget: bad address 'backend-pod.default.svc.cluster.local'
+command terminated with exit code 1
+@rifaterdemsahin ➜ /workspaces/PolicyManagement (main) $ 
+
