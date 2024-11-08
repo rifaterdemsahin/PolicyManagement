@@ -45,3 +45,10 @@ kubectl delete pod -l app=backend
 kubectl delete pod -l app=frontend
 
 
+====================================================
+
+@rifaterdemsahin ➜ /workspaces/PolicyManagement/Symbols/Nginx (main) $ kubectl get pods -l app=frontend
+NAME                                   READY   STATUS    RESTARTS   AGE
+frontend-deployment-58868f5d95-ghjxf   1/1     Running   0          48s
+
+kubectl exec -it frontend-deployment-58868f5d95-ghjxf -- curl http://backend-service:8080
