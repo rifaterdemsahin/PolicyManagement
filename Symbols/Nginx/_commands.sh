@@ -40,3 +40,8 @@ kubectl exec -it frontend-deployment-58868f5d95-8grbb  -- curl http://backend-se
 
 ===============================================================================================
 
+Pod deletion
+kubectl delete pod -l app=backend
+kubectl delete pod -l app=frontend
+
+
