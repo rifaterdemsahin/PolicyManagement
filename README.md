@@ -18,6 +18,7 @@ git pull; git add . ; git commit -m "initial commit "
 git push;clear
 ```
 Symbols/git_push.sh "living the dream"
+Symbols/git_push.sh "nginx push"
 
 
 ## License
