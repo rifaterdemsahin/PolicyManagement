@@ -33,3 +33,7 @@ configmap/nginx-config created
 NAME                                   READY   STATUS    RESTARTS   AGE
 frontend-deployment-58868f5d95-8grbb   1/1     Running   0          13s
 @rifaterdemsahin ➜ /workspaces/PolicyManagement/Symbols/Nginx (main) $ 
+
+Exec into the Frontend Pod and Test the Connection:
+
+kubectl exec -it frontend-deployment-58868f5d95-8grbb  -- curl http://backend-service:8080
