@@ -1,4 +1,4 @@
-# Self Learning Project Template
+# Self Learning Project 
 
 Documentation for the Folder Structure
 | Section             | Description                                                                                                               | Action              |
