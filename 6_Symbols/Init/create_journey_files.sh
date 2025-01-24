@@ -1,6 +1,8 @@
 #!/bin/bash
-
-cd 1_Journey
+# cd /workspaces/PolicyManagement/6_Symbols/Init/create_journey_files.sh
+# chmod +x /workspaces/PolicyManagement/6_Symbols/Init/create_journey_files.sh
+# /workspaces/PolicyManagement/6_Symbols/Init/create_journey_files.sh
+cd /workspaces/PolicyManagement/1_Journey
 
 # 🛠️ Setup instructions
 touch 1.1.1_setup.md
